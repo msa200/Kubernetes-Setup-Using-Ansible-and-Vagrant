@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
                 v.cpus = MASTERS_CPU
             end            
             master.vm.provision "ansible" do |ansible|
-                ansible.playbook = "roles/k8s.yml"
+                ansible.playbook = "kubernetes-setup/master-playbook.yml"
                 #Redefine defaults
                 ansible.extra_vars = {
                     k8s_cluster_name:       K8S_NAME,                    
@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
                 v.cpus = NODES_CPU
             end             
             node.vm.provision "ansible" do |ansible|
-                ansible.playbook = "roles/k8s.yml"                   
+                ansible.playbook = "kubernetes-setup/node-playbook.yml"                   
                 #Redefine defaults
                 ansible.extra_vars = {
                     k8s_cluster_name:     K8S_NAME,
