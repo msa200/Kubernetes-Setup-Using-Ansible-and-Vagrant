@@ -80,7 +80,7 @@
     lineinfile:
       path: /etc/default/kubelet
       state: present
-      line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      line: KUBELET_EXTRA_ARGS=--k8s_node_public_ip={{ k8s_node_public_ip }}
       create: yes
       
   - name: Restart kubelet
